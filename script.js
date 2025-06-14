@@ -19,6 +19,17 @@
     Note: This project is adapted from a public project. Original credits go to the respective author(s).
 -->
 */
+
+fetch('./server-ip.txt')
+  .then(response => response.text())
+  .then(ip => {
+    document.getElementById('ec2-ip').textContent = ip.trim();
+  })
+  .catch(error => {
+    document.getElementById('ec2-ip').textContent = 'Unable to load IP.';
+    console.error('Error fetching public IP:', error);
+  });
+
 const smallCups = document.querySelectorAll('.cup-small')
 const liters = document.getElementById('liters')
 const percentage = document.getElementById('percentage')
